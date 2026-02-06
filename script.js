@@ -13,16 +13,15 @@ function showScreen(index) {
   });
 }
 
-// Called from "Tap to continue" and "Next" buttons
-function nextScreen() {
+// Expose functions globally so HTML onclick="" can see them
+window.nextScreen = function () {
   if (currentIndex < screens.length - 1) {
     currentIndex++;
     showScreen(currentIndex);
   }
-}
+};
 
-// NO button flow
-function noClicked() {
+window.noClicked = function () {
   const ask = document.getElementById('askValentine');
   const hidden = document.getElementById('hiddenYes');
   const celebrate = document.getElementById('celebrate');
@@ -30,7 +29,6 @@ function noClicked() {
   ask.classList.remove('active');
   hidden.classList.add('active');
 
-  // Update index to hiddenYes
   currentIndex = Array.from(screens).indexOf(hidden);
 
   setTimeout(() => {
@@ -40,10 +38,9 @@ function noClicked() {
     playMusic();
     triggerFinalHearts();
   }, 1800);
-}
+};
 
-// YES button flow
-function yesClicked() {
+window.yesClicked = function () {
   const ask = document.getElementById('askValentine');
   const celebrate = document.getElementById('celebrate');
 
@@ -53,7 +50,7 @@ function yesClicked() {
   currentIndex = Array.from(screens).indexOf(celebrate);
   playMusic();
   triggerFinalHearts();
-}
+};
 
 // Music
 function playMusic() {
