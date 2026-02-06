@@ -1,60 +1,74 @@
-let current = 1;
+// Get all screens in correct order
 const screens = document.querySelectorAll('.screen');
+let currentIndex = 0; // start from first screen (intro)
 
+// Helper to show a given screen index
 function showScreen(index) {
-  screens.forEach((s, i) => {
+  screens.forEach((screen, i) => {
     if (i === index) {
-      s.classList.add('active');
+      screen.classList.add('active');
     } else {
-      s.classList.remove('active');
+      screen.classList.remove('active');
     }
   });
 }
 
+// Called from "Tap to continue" and "Next" buttons
 function nextScreen() {
-  if (current < screens.length) {
-    current++;
-    showScreen(current - 1);
+  if (currentIndex < screens.length - 1) {
+    currentIndex++;
+    showScreen(currentIndex);
   }
 }
 
+// NO button flow
 function noClicked() {
-  document.getElementById('askValentine').classList.remove('active');
-  document.getElementById('hiddenYes').classList.add('active');
+  const ask = document.getElementById('askValentine');
+  const hidden = document.getElementById('hiddenYes');
+  const celebrate = document.getElementById('celebrate');
+
+  ask.classList.remove('active');
+  hidden.classList.add('active');
+
+  // Update index to hiddenYes
+  currentIndex = Array.from(screens).indexOf(hidden);
 
   setTimeout(() => {
-    document.getElementById('hiddenYes').classList.remove('active');
-    document.getElementById('celebrate').classList.add('active');
-    current = Array.from(screens).indexOf(document.getElementById('celebrate')) + 1;
+    hidden.classList.remove('active');
+    celebrate.classList.add('active');
+    currentIndex = Array.from(screens).indexOf(celebrate);
     playMusic();
     triggerFinalHearts();
   }, 1800);
 }
 
+// YES button flow
 function yesClicked() {
-  document.getElementById('askValentine').classList.remove('active');
-  document.getElementById('celebrate').classList.add('active');
-  current = Array.from(screens).indexOf(document.getElementById('celebrate')) + 1;
+  const ask = document.getElementById('askValentine');
+  const celebrate = document.getElementById('celebrate');
+
+  ask.classList.remove('active');
+  celebrate.classList.add('active');
+
+  currentIndex = Array.from(screens).indexOf(celebrate);
   playMusic();
   triggerFinalHearts();
 }
 
+// Music
 function playMusic() {
   const audio = document.getElementById('bgMusic');
   if (!audio) return;
   audio.volume = 0.8;
   const playPromise = audio.play();
   if (playPromise !== undefined) {
-    playPromise.catch(() => {
-      // Some browsers block autoplay, user already interacted via click
-    });
+    playPromise.catch(() => {});
   }
 }
 
 /* Floating hearts animation on canvas */
 const canvas = document.getElementById('floatingHearts');
 const ctx = canvas.getContext('2d');
-
 let hearts = [];
 let cw, ch;
 
@@ -122,6 +136,7 @@ function triggerFinalHearts() {
   finalHearts.classList.add('pop');
 }
 
+// Inject keyframes for pop
 const style = document.createElement('style');
 style.textContent = `
   .finalHearts.pop span {
