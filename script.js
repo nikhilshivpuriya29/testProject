@@ -1,8 +1,7 @@
-// Get all screens in correct order
+// ----- SIMPLE SCREEN NAVIGATION -----
 const screens = document.querySelectorAll('.screen');
-let currentIndex = 0; // start from first screen (intro)
+let currentIndex = 0; // 0 = first .screen (intro)
 
-// Helper to show a given screen index
 function showScreen(index) {
   screens.forEach((screen, i) => {
     if (i === index) {
@@ -13,7 +12,7 @@ function showScreen(index) {
   });
 }
 
-// Expose functions globally so HTML onclick="" can see them
+// Make functions global for inline onclick
 window.nextScreen = function () {
   if (currentIndex < screens.length - 1) {
     currentIndex++;
@@ -36,7 +35,6 @@ window.noClicked = function () {
     celebrate.classList.add('active');
     currentIndex = Array.from(screens).indexOf(celebrate);
     playMusic();
-    triggerFinalHearts();
   }, 1800);
 };
 
@@ -49,21 +47,18 @@ window.yesClicked = function () {
 
   currentIndex = Array.from(screens).indexOf(celebrate);
   playMusic();
-  triggerFinalHearts();
 };
 
-// Music
+// ----- MUSIC -----
 function playMusic() {
   const audio = document.getElementById('bgMusic');
   if (!audio) return;
   audio.volume = 0.8;
-  const playPromise = audio.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(() => {});
-  }
+  const p = audio.play();
+  if (p && p.catch) p.catch(() => {});
 }
 
-/* Floating hearts animation on canvas */
+// ----- FLOATING HEARTS BACKGROUND -----
 const canvas = document.getElementById('floatingHearts');
 const ctx = canvas.getContext('2d');
 let hearts = [];
@@ -86,7 +81,7 @@ function createHeart() {
   };
 }
 
-for (let i = 0; i < 26; i++) {
+for (let i = 0; i < 24; i++) {
   hearts.push(createHeart());
 }
 
@@ -123,32 +118,3 @@ function animateHearts() {
   requestAnimationFrame(animateHearts);
 }
 animateHearts();
-
-/* Small pop animation for final hearts on YES */
-function triggerFinalHearts() {
-  const finalHearts = document.querySelector('.finalHearts');
-  if (!finalHearts) return;
-  finalHearts.classList.remove('pop');
-  void finalHearts.offsetWidth; // restart animation
-  finalHearts.classList.add('pop');
-}
-
-// Inject keyframes for pop
-const style = document.createElement('style');
-style.textContent = `
-  .finalHearts.pop span {
-    animation: popHeart 0.6s ease-out forwards;
-  }
-  .finalHearts.pop span:nth-child(2) {
-    animation-delay: 0.12s;
-  }
-  .finalHearts.pop span:nth-child(3) {
-    animation-delay: 0.24s;
-  }
-  @keyframes popHeart {
-    0% { transform: translateY(10px) scale(0.4); opacity: 0; }
-    60% { transform: translateY(-6px) scale(1.1); opacity: 1; }
-    100% { transform: translateY(0) scale(1); opacity: 1; }
-  }
-`;
-document.head.appendChild(style);
