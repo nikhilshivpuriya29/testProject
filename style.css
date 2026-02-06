@@ -10,8 +10,8 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: url('https://cdn.jsdelivr.net/gh/akasha-love/assets/heartbg.png') center/cover no-repeat;
-  opacity: 0.15;
+  background: radial-gradient(circle at center, #fff0f4, #ffe4e8);
+  opacity: 0.35;
   z-index: -1;
 }
 
@@ -25,7 +25,7 @@ body {
 }
 
 button {
-  padding: 14px 26px;
+  padding: 14px 28px;
   border: none;
   border-radius: 28px;
   font-size: 16px;
@@ -62,14 +62,15 @@ button {
   margin: 10px;
 }
 
-img {
-  width: 90%;
-  border-radius: 18px;
-  margin-top: 20px;
+.loveLine {
+  font-size: 20px;
+  margin-top: 12px;
+  color: #ff4d7a;
+  animation: heartPop 1.5s ease-in-out infinite;
 }
 
 .confetti {
-  height: 5px;
+  height: 6px;
   background: repeating-linear-gradient(
     45deg,
     #fff0f4,
@@ -77,12 +78,17 @@ img {
     #ff80ab 10px,
     #ff80ab 20px
   );
-  animation: confettiFall 1.5s ease-in-out infinite;
+  animation: confettiFall 1.2s ease-in-out infinite;
 }
 
 @keyframes pulse {
   0%,100% { transform: scale(1); }
   50% { transform: scale(1.2); }
+}
+
+@keyframes heartPop {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 @keyframes confettiFall {
