@@ -1,44 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For Nuppy ❤️</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <audio id="bgMusic" loop>
-  <!-- Soft romantic music (auto plays when she clicks YES) -->
-  <source src="https://cdn.jsdelivr.net/gh/akasha-love/sounds/romantic.mp3" type="audio/mpeg">
+  <source src="https://cdn.jsdelivr.net/gh/akasha-love/sounds/romantic.mp3" type="audio/mpeg" />
 </audio>
 
-<!-- Floating hearts background -->
 <div id="heartBg"></div>
 <canvas id="floatingHearts"></canvas>
 
-<!-- Glow around edges -->
-<div class="pageGlow"></div>
-
 <section class="screen active" id="intro">
-  <div class="contentBox fadeUp">
-    <h1 class="typewriter">Hey Nuppy… 💖</h1>
-    <p class="subtitle">I made a little something just for you.</p>
-    <button class="primaryBtn" onclick="nextScreen()">Tap to continue</button>
+  <div class="contentBox">
+    <h1>Hey Nuppy… 💖</h1>
+    <p>This is for you.</p>
+    <button onclick="nextScreen()">Tap to continue</button>
   </div>
-  <div class="scrollHint">Swipe / scroll →</div>
 </section>
 
 <section class="screen" id="cards">
-  <div class="contentBox slideIn">
+  <div class="contentBox">
     <h2>Our little story ✨</h2>
-    <p class="smallNote">Slide the cards to move through our memories.</p>
-
     <div class="cardsContainer">
-
       <div class="card">
         <h3>Our Beginning</h3>
         <p>Hamari baatein chat se shuru hui…<br>
@@ -73,54 +61,40 @@
         Jo future hume intzaar kar raha hai —<br>
         usme sirf tum aur main hai.</p>
       </div>
-
     </div>
-
-    <button class="primaryBtn" onclick="nextScreen()">Next</button>
+    <button onclick="nextScreen()">Next</button>
   </div>
 </section>
 
 <section class="screen" id="heartUnlock">
-  <div class="contentBox fadeUp">
-    <p class="smallNote">There’s something locked in my heart…</p>
-    <div class="bigHeartWrapper">
-      <div class="bigHeartGlow"></div>
-      <div class="bigHeart" onclick="nextScreen()">❤️</div>
-    </div>
-    <p class="tapText">Tap the heart</p>
+  <div class="contentBox">
+    <p>Tap the heart</p>
+    <div class="bigHeart" onclick="nextScreen()">❤️</div>
   </div>
 </section>
 
 <section class="screen" id="askValentine">
-  <div class="contentBox fadeUp">
+  <div class="contentBox">
     <h1>Will you be my Valentine? 🌹</h1>
-    <p class="subtitle">Soch ke haan kehna… par dil ko pata hai answer. 😌</p>
     <div class="btnGroup">
-      <button class="primaryBtn yesBtn" onclick="yesClicked()">YES 💖</button>
-      <button class="ghostBtn noBtn" onclick="noClicked()">NO 🙈</button>
+      <button class="yesBtn" onclick="yesClicked()">YES 💖</button>
+      <button class="noBtn" onclick="noClicked()">NO 🙈</button>
     </div>
   </div>
 </section>
 
 <section class="screen" id="hiddenYes">
-  <div class="contentBox fadeUp">
+  <div class="contentBox">
     <h1>Hidden YES… I knew it 😌💖</h1>
-    <p>Your heart already said yes before your lips did.</p>
   </div>
 </section>
 
 <section class="screen" id="celebrate">
-  <div class="contentBox fadeUp">
+  <div class="contentBox">
     <div class="confetti"></div>
-    <h1 class="celebrateTitle">It’s a YES! 💕</h1>
-    <p class="celebrateText">You make my world complete, Nuppy ❤️</p>
+    <h1>It’s a YES! 💕</h1>
+    <p>You make my world complete, Nuppy ❤️</p>
     <p class="loveLine">Forever & always… with all my heart.</p>
-
-    <div class="finalHearts">
-      <span>❤️</span><span>❤️</span><span>❤️</span>
-    </div>
-
-    <p class="footerNote">Save this link… jab bhi kholegi, main yahin milunga. 💌</p>
   </div>
 </section>
 
