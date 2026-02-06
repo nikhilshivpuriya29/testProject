@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Nuppy ❤️</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.jsdelivr.net/gh/akasha-love/sounds/romantic.mp3" type="audio/mpeg">
+</audio>
+
+<div id="heartBg"></div>
+
+<section class="screen active" id="intro">
+  <h1>Hey Nuppy… 💖</h1>
+  <p>I made this just for you.</p>
+  <button onclick="nextScreen()">Tap to continue</button>
+</section>
+
+<section class="screen" id="cards">
+  <div class="cardsContainer">
+
+    <div class="card">
+      <h3>Our Beginning</h3>
+      <p>Hamari baatein sabse pehle chat se shuru hui…<br>
+      Tujhse message paane ka mujhe pehle pata nahi tha…<br>
+      Ye sirf ek shuruat thi — ek kahani.</p>
+    </div>
+
+    <div class="card">
+      <h3>That First Night</h3>
+      <p>Woh raat… humne milkar subah ka intezar kiya.<br>
+      Time ruk sa gaya tha…<br>
+      Aur tab lage… yahi woh feeling hai jo dil kabhi bhool na paye.</p>
+    </div>
+
+    <div class="card">
+      <h3>Home in Your Words</h3>
+      <p>Baat karte waqt… aisa lagta tha<br>
+      jaise hum pehli baar nahi, ghar mil rahe hain.<br>
+      Us connection mein humara future tha.</p>
+    </div>
+
+    <div class="card">
+      <h3>Moments That Stayed</h3>
+      <p>Train station kiss… ped ke neeche hansi…<br>
+      Bike pe ghumna…<br>
+      Har moment mein… tum ho.</p>
+    </div>
+
+    <div class="card">
+      <h3>Forever & Always</h3>
+      <p>Humne milkar sapne banaye…<br>
+      Unhe sach kiya…<br>
+      Aur jo future hume intzaar kar raha hai —<br>
+      usme sirf tum aur main hai.</p>
+    </div>
+
+  </div>
+  <button onclick="nextScreen()">Next</button>
+</section>
+
+<section class="screen" id="heartUnlock">
+  <div class="bigHeart" onclick="nextScreen()">❤️</div>
+  <p>Tap the heart</p>
+</section>
+
+<section class="screen" id="askValentine">
+  <h1>Will you be my Valentine? 🌹</h1>
+  <div class="btnGroup">
+    <button class="yes" onclick="yesClicked()">YES 💖</button>
+    <button class="no" onclick="noClicked()">NO 🙈</button>
+  </div>
+</section>
+
+<section class="screen" id="hiddenYes">
+  <h1>Hidden YES… I knew it 😌💖</h1>
+</section>
+
+<section class="screen" id="celebrate">
+  <div class="confetti"></div>
+  <h1>It’s a YES! 💕</h1>
+  <p>You make my world complete, Nuppy ❤️</p>
+  <img src="https://cdn.jsdelivr.net/gh/your-images/nikk-nuppy.png" alt="Us Together">
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
