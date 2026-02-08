@@ -4,45 +4,32 @@
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #ffe4f0 0%, #ffd1dc 30%, #ffc4e1 60%, #ff9fb5 100%);
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #ffe4e8;
   text-align: center;
-  color: #2c1b25;
+  color: #333;
   min-height: 100vh;
   overflow: hidden;
 }
 
-/* Floating hearts canvas */
+#heartBg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #fff0f4, #ffe4e8);
+  opacity: 0.6;
+  z-index: -1;
+}
+
 #floatingHearts {
   position: fixed;
   inset: 0;
   z-index: -2;
 }
 
-/* Soft gradient overlay */
-#heartBg {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at 10% 0%, rgba(255,255,255,0.55), transparent 50%),
-              radial-gradient(circle at 90% 100%, rgba(255,255,255,0.4), transparent 55%);
-  opacity: 0.9;
-  z-index: -1;
-}
-
-/* Glow edges */
-.pageGlow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  box-shadow: 0 0 100px rgba(255, 105, 180, 0.6) inset;
-  z-index: -1;
-}
-
 .screen {
-  display: none;
-  padding: 40px 15px 60px;
+  padding: 40px 15px;
   min-height: 100vh;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -51,125 +38,37 @@ body {
   display: flex;
 }
 
-/* Glassmorphism content box */
 .contentBox {
-  background: rgba(255, 255, 255, 0.28);
-  border-radius: 28px;
-  padding: 28px 22px 30px;
-  backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 18px 45px rgba(255, 105, 180, 0.35);
-  width: min(480px, 96%);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  padding: 24px 18px 26px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  width: min(480px, 94%);
   margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Small glowing highlight */
-.contentBox::before {
-  content: "";
-  position: absolute;
-  width: 160px;
-  height: 160px;
-  background: radial-gradient(circle, rgba(255,255,255,0.9), transparent 70%);
-  top: -60px;
-  right: -40px;
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-h1, h2, h3 {
-  margin: 0 0 10px;
-}
-
-.subtitle {
-  font-size: 14px;
-  margin-bottom: 8px;
-  opacity: 0.85;
-}
-
-.smallNote {
-  font-size: 13px;
-  margin-bottom: 14px;
-  opacity: 0.8;
 }
 
 button {
-  font-family: inherit;
-}
-
-/* Buttons */
-.primaryBtn {
-  padding: 12px 28px;
+  padding: 14px 28px;
   border: none;
   border-radius: 999px;
-  font-size: 15px;
-  background: linear-gradient(135deg, #ff5c8d, #ff8bb3);
+  font-size: 16px;
+  background: #ff5c8d;
   color: white;
-  margin-top: 18px;
+  margin-top: 20px;
   cursor: pointer;
-  letter-spacing: 0.03em;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(255, 92, 141, 0.4);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 8px 20px rgba(255, 92, 141, 0.4);
 }
 
-.primaryBtn::after {
-  content: "";
-  position: absolute;
-  left: -40%;
-  top: 0;
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.5), transparent);
-  transform: skewX(-25deg);
-  transition: transform 0.45s ease;
+button:hover {
+  filter: brightness(1.05);
 }
 
-.primaryBtn:hover {
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 16px 30px rgba(255, 92, 141, 0.5);
-}
-
-.primaryBtn:hover::after {
-  transform: translateX(220%) skewX(-25deg);
-}
-
-.ghostBtn {
-  padding: 12px 24px;
-  border-radius: 999px;
-  border: 1.5px solid rgba(255, 92, 141, 0.7);
-  background: rgba(255,255,255,0.15);
-  color: #ff5c8d;
-  margin-top: 18px;
-  cursor: pointer;
-  font-size: 15px;
-  transition: background 0.2s ease, transform 0.18s ease;
-}
-
-.ghostBtn:hover {
-  background: rgba(255, 255, 255, 0.35);
-  transform: translateY(-1px);
-}
-
-.btnGroup {
-  margin-top: 18px;
-}
-
-.btnGroup button {
-  margin: 8px;
-}
-
-/* Cards */
 .cardsContainer {
   display: flex;
   overflow-x: auto;
-  gap: 14px;
-  padding: 12px 0;
+  gap: 12px;
+  padding: 10px 0;
   scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
 .cardsContainer::-webkit-scrollbar {
@@ -177,52 +76,19 @@ button {
 }
 
 .card {
-  min-width: 82%;
-  background: rgba(255, 255, 255, 0.75);
-  border-radius: 20px;
-  padding: 18px 16px 20px;
-  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+  min-width: 80%;
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   scroll-snap-align: start;
-  font-size: 15px;
+  font-size: 16px;
   text-align: left;
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before {
-  content: "♥";
-  position: absolute;
-  font-size: 70px;
-  color: rgba(255, 92, 141, 0.12);
-  right: -5px;
-  bottom: -25px;
-}
-
-/* Big heart screen */
-.bigHeartWrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 18px 0 10px;
-}
-
-.bigHeartGlow {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 92, 141, 0.5), transparent 65%);
-  animation: glowPulse 2.4s ease-in-out infinite;
 }
 
 .bigHeart {
   font-size: 80px;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
   animation: pulse 1.6s infinite;
-  filter: drop-shadow(0 10px 18px rgba(255, 92, 141, 0.6));
 }
 
 .tapText {
@@ -231,17 +97,17 @@ button {
   opacity: 0.85;
 }
 
-.scrollHint {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 11px;
-  opacity: 0.7;
-  animation: floatUpDown 1.6s ease-in-out infinite;
+.btnGroup button {
+  margin: 8px;
 }
 
-/* Celebrate */
+.loveLine {
+  font-size: 20px;
+  margin-top: 12px;
+  color: #ff4d7a;
+  animation: heartPop 1.5s ease-in-out infinite;
+}
+
 .confetti {
   height: 6px;
   background: repeating-linear-gradient(
@@ -249,115 +115,24 @@ button {
     #fff0f4,
     #fff0f4 10px,
     #ff80ab 10px,
-    #ff80ab 20px,
-    #ffd1e8 20px,
-    #ffd1e8 30px
+    #ff80ab 20px
   );
   animation: confettiFall 1.2s ease-in-out infinite;
   border-radius: 999px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
-.celebrateTitle {
-  font-size: 28px;
-  margin-bottom: 6px;
-}
-
-.celebrateText {
-  margin-top: 0;
-}
-
-.loveLine {
-  font-size: 18px;
-  margin-top: 14px;
-  color: #ff4d7a;
-  animation: heartPop 1.5s ease-in-out infinite;
-}
-
-.finalHearts {
-  margin-top: 18px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  font-size: 24px;
-  animation: floatUpDown 2s ease-in-out infinite;
-}
-
-.footerNote {
-  font-size: 12px;
-  margin-top: 18px;
-  opacity: 0.75;
-}
-
-/* Typewriter intro */
-.typewriter {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 3px solid rgba(255, 92, 141, 0.7);
-  width: 0;
-  animation: typing 2.6s steps(22, end) forwards, blink 0.75s step-end infinite;
-}
-
-/* Animations */
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.15); }
-}
-
-@keyframes glowPulse {
-  0%, 100% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.15); opacity: 1; }
+  50% { transform: scale(1.2); }
 }
 
 @keyframes heartPop {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.06); }
+  50% { transform: scale(1.05); }
 }
 
 @keyframes confettiFall {
-  0% { transform: translateY(-6px); }
-  100% { transform: translateY(6px); }
-}
-
-@keyframes floatUpDown {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, -5px); }
-}
-
-.fadeUp {
-  animation: fadeUp 0.7s ease-out;
-}
-
-.slideIn {
-  animation: slideIn 0.6s ease-out;
-}
-
-@keyframes fadeUp {
-  0% { opacity: 0; transform: translateY(12px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideIn {
-  0% { opacity: 0; transform: translateY(16px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 260px; }
-}
-
-@keyframes blink {
-  from, to { border-color: transparent; }
-  50% { border-color: rgba(255, 92, 141, 0.8); }
-}
-
-/* Responsive tweaks */
-@media (min-width: 768px) {
-  .contentBox {
-    padding: 32px 32px 36px;
-  }
-  .card {
-    min-width: 60%;
-  }
+  0% { transform: translateY(-8px); }
+  100% { transform: translateY(8px); }
 }
