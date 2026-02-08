@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will you be my Valentine? ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.jsdelivr.net/gh/akasha-love/sounds/romantic.mp3" type="audio/mpeg" />
+</audio>
+
+<div id="heartBg"></div>
+<canvas id="floatingHearts"></canvas>
+
+<section class="screen active" id="askValentine">
+  <div class="contentBox">
+    <h1>Will you be my Valentine? 🌹</h1>
+    <div class="btnGroup">
+      <button class="yesBtn" onclick="yesClicked()">YES 💖</button>
+      <button class="noBtn" onclick="noClicked()">NO 🙈</button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="hiddenYes">
+  <div class="contentBox">
+    <h1>Hidden YES… I knew it 😌💖</h1>
+  </div>
+</section>
+
+<section class="screen" id="celebrate">
+  <div class="contentBox">
+    <div class="confetti"></div>
+    <h1>It’s a YES! 💕</h1>
+    <p>You make my world complete, Nuppy ❤️</p>
+    <p class="loveLine">Forever & always… with all my heart.</p>
+  </div>
+</section>
+
+<script src="valentine.js"></script>
+<script src="bg.js"></script>
+</body>
+</html>
